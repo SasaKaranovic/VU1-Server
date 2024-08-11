@@ -62,12 +62,11 @@
           wantedBy         = ["multi-user.target"];
           restartIfChanged = true;
           serviceConfig    = {
-            User        = "root";
-            Group       = "root";
-            DynamicUser = true;
-            ExecStart   = "${cfg.package}/bin/vu-server";
-            Restart     = "on-failure";
-            RestartSec  = "5s";
+            User       = "root";
+            Group      = "root";
+            ExecStart  = "${cfg.package}/bin/vu-server";
+            Restart    = "on-failure";
+            RestartSec = "5s";
           };
         };
       };
