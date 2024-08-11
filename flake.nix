@@ -55,6 +55,7 @@
       };
 
       config = lib.mkIf cfg.enable {
+        overlays                   = [overlays.default];
         environment.systemPackages = [cfg.package];
         systemd.services.vu-server = {
           description      = "VU Dial Server daemon.";
