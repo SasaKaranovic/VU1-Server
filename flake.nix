@@ -62,7 +62,6 @@
           wantedBy         = ["multi-user.target"];
           restartIfChanged = true;
           serviceConfig    = {
-            Type                 = "simple";
             User                 = "root";
             Group                = "root";
             PermissionsStartOnly = true;
