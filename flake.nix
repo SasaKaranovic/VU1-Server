@@ -60,12 +60,12 @@
         systemd.services.vu-server = {
           description      = "VU Dial Server daemon.";
           wantedBy         = ["multi-user.target"];
-          after            = ["network.target"];
           restartIfChanged = true;
           serviceConfig    = {
             DynamicUser = true;
             ExecStart   = "${cfg.package}/bin/vu-server";
-            Restart     = "always";
+            Restart     = "on-failure";
+            RestartSec  = "5s";
           };
         };
       };
