@@ -22,7 +22,7 @@ WEB_ROOT = os.path.join(BASEDIR_PATH, 'www')
 
 def pid_lock(service_name, create=True):
     file_name = "service.{}.pid.lock".format(service_name)
-    pid_file = os.path.join("/var/lock", file_name)
+    pid_file = os.path.join('/var', 'lock', file_name)
 
     if create:
         pid = os.getpid()
