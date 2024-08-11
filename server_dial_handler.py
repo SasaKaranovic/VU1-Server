@@ -103,7 +103,7 @@ class ServerDialHandler:
 
     def _check_upload_for_dial_image(self, dial_uid):
         filename = f'img_{dial_uid}'
-        filepath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'upload', filename)
+        filepath = os.path.join('/var', 'spool', 'vu-server', 'upload', filename)
         if os.path.exists(filepath):
             return filename
 

@@ -9,7 +9,7 @@ class DialsDB:
 
     def __init__(self, database_file='vudials.db', init_if_missing=False):
         # database_path = os.path.join(os.path.expanduser('~'), 'KaranovicResearch', 'vudials')
-        database_path = os.path.join(os.path.dirname(__file__))
+        database_path = os.path.join('/var/db')
 
         if not os.path.exists(database_path):
             os.makedirs(database_path)

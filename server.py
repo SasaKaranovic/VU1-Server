@@ -5,6 +5,7 @@ import argparse
 import zlib
 import time
 import re
+import tempfile
 from mimetypes import guess_type
 from dials.base_logger import logger, set_logger_level
 from tornado.web import Application, RequestHandler, Finish, StaticFileHandler
@@ -21,7 +22,7 @@ WEB_ROOT = os.path.join(BASEDIR_PATH, 'www')
 
 def pid_lock(service_name, create=True):
     file_name = "service.{}.pid.lock".format(service_name)
-    pid_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), file_name)
+    pid_file = os.path.join("/var/lock", file_name)
 
     if create:
         pid = os.getpid()
@@ -35,7 +36,7 @@ class BaseHandler(RequestHandler):
     def initialize(self, handler, config):
         self.handler = handler # pylint: disable=attribute-defined-outside-init
         self.config = config # pylint: disable=attribute-defined-outside-init
-        self.upload_path = os.path.join(os.path.dirname(__file__), 'upload') # pylint: disable=attribute-defined-outside-init
+        self.upload_path = os.path.join('/var', 'spool', 'vu-server', 'upload') # pylint: disable=attribute-defined-outside-init
 
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin", "*")
